@@ -19,6 +19,6 @@ public enum Speaker {
 
     Speaker(String displayName, Color color) { this.displayName = displayName; this.color = color; }
 
-    public String getDisplayName() { return displayName; }
+    public String getDisplayName() { return this == KAI ? PlayerName.getUpper() : displayName; }
     public Color getColor() { return color; }
 }

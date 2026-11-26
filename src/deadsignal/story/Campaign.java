@@ -30,7 +30,7 @@ public final class Campaign {
                 L(NARRATOR, "PORT MERIDIAN.  Population: 2.1 million."),
                 L(NARRATOR, "Seventy-two hours ago, something escaped BioGen Laboratories. The news called it the Lazarus Strain."),
                 L(NARRATOR, "The dead stopped staying dead. The city fell in a single night."),
-                L(NARRATOR, "Kai Navarro, paramedic, was on shift at St. Agnes Hospital when the first patients came in... biting."),
+                L(NARRATOR, "{name}, paramedic, was on shift at St. Agnes Hospital when the first patients came in... biting."),
                 L(NARRATOR, "Three days later, he wakes up. The city is silent."));
         epilogue = Arrays.asList(
                 L(RADIO, "This is Dr. Lena Ortiz. If anyone can hear this... the cure is real. Port Meridian is not lost."),
@@ -53,15 +53,15 @@ public final class Campaign {
                         .radio(L(TIP, "WASD to move, mouse to aim, LEFT CLICK to shoot. Follow the yellow arrow."),
                                 L(TIP, "Hold E next to the radio to use it."))
                         .completion(L(LENA, "Oh thank God - a survivor! Who is this?"),
-                                L(KAI, "Kai Navarro. Paramedic at St. Agnes."),
-                                L(LENA, "Listen, Kai. They hunt by sound, and you just made a lot of it. Clear the courtyard!")))
+                                L(KAI, "{name}. Paramedic at St. Agnes."),
+                                L(LENA, "Listen, {name}. They hunt by sound, and you just made a lot of it. Clear the courtyard!")))
                 .mission(new KillMission("Clear the hospital courtyard", 25)
                         .radio(L(TIP, "R reloads. SPACE does a dodge roll - you can't be hurt mid-roll."))
                         .onProgress(12, L(LENA, "You're doing great. Keep moving - never let them surround you.")))
                 .mission(new BossMission("Kill The Censer", BossType.CENSER)
                         .briefing(L(KAI, "Green smoke is pouring out of the chapel... and something is walking inside it."),
                                 L(LENA, "That was Father Aldous, the hospital chaplain. The strain turned his censer smoke into poison."),
-                                L(LENA, "Stay out of that cloud, Kai. And when he charges - dodge sideways!"))
+                                L(LENA, "Stay out of that cloud, {name}. And when he charges - dodge sideways!"))
                         .radio(L(TIP, "MIASMA burns and slows you up close. Fight from range while the cloud is up."),
                                 L(TIP, "If he charges into a wall he is stunned and takes extra damage. Punish him!")))
                 .mission(new ReachMission("Get to the ambulance", "AMBULANCE")
@@ -80,7 +80,7 @@ public final class Campaign {
                         L(KAI, "Out of gas. Of course."),
                         L(LENA, "The station's emergency gate runs on a generator. You'll need fuel - the wrecks on Fifth Avenue still have some."),
                         L(GRAVES, "Attention, civilians. This is Colonel Graves, Meridian Defense Command. Evacuation is underway at Fort Harlow. Remain indoors."),
-                        L(LENA, "Don't listen to him, Kai. Fort Harlow stopped answering my calls two days ago."))
+                        L(LENA, "Don't listen to him, {name}. Fort Harlow stopped answering my calls two days ago."))
                 .mission(new ItemMission("Collect fuel canisters", 4, FuelCanister::new, 12, 48)
                         .radio(L(TIP, "Bloated orange infected EXPLODE. Kill them at range - or near their friends."))
                         .onProgress(2, L(KAI, "Two down. These streets used to be packed with people.")))
@@ -103,7 +103,7 @@ public final class Campaign {
         chapters.add(new Chapter("UNDERTOW", "Union Station Tunnels", Theme.SEWER, 3303)
                 .spawning(1.05f, 32, 14, new SpawnTable().add(ZombieType.WALKER, 40).add(ZombieType.RUNNER, 10).add(ZombieType.SPITTER, 15).add(ZombieType.CRAWLER, 35))
                 .intro(L(KAI, "Can't see a thing down here. Flashlight on."),
-                        L(LENA, "Survivors are hiding in the maintenance tunnels. Please, Kai - bring them to the platform."),
+                        L(LENA, "Survivors are hiding in the maintenance tunnels. Please, {name} - bring them to the platform."),
                         L(LENA, "And the backup generators are dead. Without power, I can't open the safe-room door."))
                 .mission(new ItemMission("Rescue the trapped survivors", 4, Survivor::new, 12, 48)
                         .radio(L(TIP, "Hold E next to a survivor to rescue them. Spitters lob acid - keep moving."))
@@ -112,12 +112,12 @@ public final class Campaign {
                 .mission(new ItemMission("Restart the backup generators", 3, Generator::new, 12, 48)
                         .onProgress(2, L(LENA, "Power's flickering back... one more!")))
                 .mission(new BossMission("Kill The Broodmother", BossType.BROODMOTHER)
-                        .briefing(L(LENA, "Kai... the survivors were right. That sound... it's a nest."),
+                        .briefing(L(LENA, "{name}... the survivors were right. That sound... it's a nest."),
                                 L(KAI, "Oh, that is NOT okay."),
                                 L(LENA, "The Broodmother. Kill her and the crawlers stop coming. Stay out of the acid pools!"))
                         .radio(L(TIP, "BLOOD RITE: when a red rune circle appears under you, MOVE. It erupts and jams your guns.")))
                 .mission(new ReachMission("Reach Lena's safe room", "SAFE ROOM"))
-                .outro(L(LENA, "Kai. You're real. I was starting to think I'd been talking to a ghost."),
+                .outro(L(LENA, "{name}. You're real. I was starting to think I'd been talking to a ghost."),
                         L(KAI, "Close enough. So what's the plan, Doctor?"),
                         L(LENA, "A cure. I was on the Lazarus team at BioGen. Dr. Voss's research holds the antigen sequence - on three drives in the lab."),
                         L(KAI, "So we walk into the place where all of this started."),
@@ -155,15 +155,15 @@ public final class Campaign {
                 .spawning(0.95f, 34, 16, new SpawnTable().add(ZombieType.WALKER, 30).add(ZombieType.RUNNER, 30).add(ZombieType.BRUTE, 10).add(ZombieType.SPITTER, 15).add(ZombieType.EXPLODER, 15))
                 .intro(L(NARRATOR, "BioGen Laboratories. Where the dead first woke up."),
                         L(LENA, "Three research drives. Voss kept them in separate wings."),
-                        L(LENA, "And Kai - stay out of the green spills. That's concentrated strain."))
+                        L(LENA, "And {name} - stay out of the green spills. That's concentrated strain."))
                 .mission(new ItemMission("Download the research drives", 3, ResearchDrive::new, 12, 48)
                         .onProgress(1, L(LENA, "Decrypting... these are Voss's personal logs."))
                         .onProgress(2, L(LENA, "Oh God. Voss injected HIMSELF with the strain. He called himself 'the Shepherd'. He thought he could LEAD them."))
-                        .onProgress(3, L(LENA, "...And Graves knew. The military funded all of it. They're not evacuating anyone, Kai. They're covering it up.")))
+                        .onProgress(3, L(LENA, "...And Graves knew. The military funded all of it. They're not evacuating anyone, {name}. They're covering it up.")))
                 .mission(new KillMission("Fight through the containment wing", 35))
                 .mission(new BossMission("Kill Subject 13", BossType.SUBJECT13)
                         .briefing(L(SYSTEM, "CONTAINMENT BREACH - WING C - SUBJECT 13 RELEASED"),
-                                L(LENA, "Subject 13... their 'perfect soldier'. It's faster than anything you've seen. Dodge, Kai. Keep dodging!"))
+                                L(LENA, "Subject 13... their 'perfect soldier'. It's faster than anything you've seen. Dodge, {name}. Keep dodging!"))
                         .radio(L(TIP, "FAULT LINE: it rips the floor open in a line - the rocks stun you and block your path and bullets. Roll aside!")))
                 .mission(new ReachMission("Escape to the loading dock", "LOADING DOCK"))
                 .outro(L(KAI, "We've got the data. What now?"),
@@ -203,18 +203,18 @@ public final class Campaign {
                 .spawning(0.8f, 40, 18, new SpawnTable().add(ZombieType.WALKER, 25).add(ZombieType.RUNNER, 25).add(ZombieType.BRUTE, 12)
                         .add(ZombieType.SPITTER, 12).add(ZombieType.EXPLODER, 12).add(ZombieType.CRAWLER, 14))
                 .intro(L(NARRATOR, "Dawn. BioGen Tower burns like a torch above the dead city."),
-                        L(VOSS, "Kai Navarro. The paramedic. You've spent your life saving people... So have I. I saved them from death itself."),
+                        L(VOSS, "{name}. The paramedic. You've spent your life saving people... So have I. I saved them from death itself."),
                         L(KAI, "You turned them into monsters."),
                         L(VOSS, "I made them a flock. And every flock needs its Shepherd."),
-                        L(LENA, "Kai, those pulsing growths are hive nodes. They're feeding him. Destroy them!"))
+                        L(LENA, "{name}, those pulsing growths are hive nodes. They're feeding him. Destroy them!"))
                 .mission(new HiveMission("Destroy the hive nodes", 4)
-                        .onProgress(2, L(VOSS, "You're hurting my children, Kai."))
+                        .onProgress(2, L(VOSS, "You're hurting my children, {name}."))
                         .onProgress(4, L(LENA, "That's the last one! He's exposed!")))
                 .mission(new BossMission("Defeat The Shepherd", BossType.SHEPHERD)
                         .briefing(L(VOSS, "Enough. Let me show you what eternity looks like."))
                         .radio(L(TIP, "Keep your FLAMETHROWER and GRENADES ready. Some things bullets cannot touch.")))
                 .mission(new SampleMission("Collect the Shepherd's blood sample")
-                        .radio(L(LENA, "Kai... is he dead? Get the sample. Quickly!")))
+                        .radio(L(LENA, "{name}... is he dead? Get the sample. Quickly!")))
                 .outro(L(LENA, "I have it. The original strain. With Voss's sequence... I can make the cure."),
                         L(KAI, "Then let's tell the world."),
                         L(LENA, "Every radio from here to the coast. All frequencies."))

@@ -40,6 +40,7 @@ public final class GamePanel extends JPanel {
                 if (e.getKeyCode() == KeyEvent.VK_F11) { toggleMaximized(); return; }
                 input.keyDown(e.getKeyCode());
             }
+            @Override public void keyTyped(KeyEvent e) { input.charTyped(e.getKeyChar()); }
             @Override public void keyReleased(KeyEvent e) { input.keyUp(e.getKeyCode()); }
         });
         MouseAdapter mouse = new MouseAdapter() {

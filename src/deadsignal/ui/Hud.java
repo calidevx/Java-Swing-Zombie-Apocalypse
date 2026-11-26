@@ -12,6 +12,7 @@ import deadsignal.gfx.Fonts;
 import deadsignal.gfx.PickupSprite;
 import deadsignal.mission.Mission;
 import deadsignal.progress.PlayerProfile;
+import deadsignal.story.PlayerName;
 import deadsignal.weapon.Weapon;
 
 import java.awt.*;
@@ -39,7 +40,7 @@ public final class Hud {
 
     private void drawVitals(Graphics2D g, Player p, PlayerProfile prof, Assets a) {
         g.setColor(new Color(0, 0, 0, 130)); g.fillRoundRect(10, 10, 262, 92, 12, 12);
-        g.setFont(Fonts.SMALL); Util.text(g, "KAI NAVARRO", 20, 28, new Color(150, 200, 255));
+        g.setFont(Fonts.SMALL); Util.text(g, PlayerName.getUpper(), 20, 28, new Color(150, 200, 255));
         float hf = p.getHealthFraction();
         Util.bar(g, 20, 34, 240, 16, hf, hf > 0.3f ? new Color(100, 230, 110) : new Color(240, 80, 60), hf > 0.3f ? new Color(40, 140, 60) : new Color(150, 30, 20));
         Util.ctext(g, (int) Math.ceil(p.getHealth()) + " / " + (int) p.getMaxHealth(), 140, 47, Color.WHITE);

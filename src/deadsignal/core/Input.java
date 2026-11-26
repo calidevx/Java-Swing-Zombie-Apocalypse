@@ -13,6 +13,7 @@ public final class Input {
     private final boolean[] keys = new boolean[1024];
     private final ConcurrentLinkedQueue<Integer> pressedQueue = new ConcurrentLinkedQueue<>();
     private final ConcurrentLinkedQueue<int[]> clickQueue = new ConcurrentLinkedQueue<>();
+    private final ConcurrentLinkedQueue<Character> typedQueue = new ConcurrentLinkedQueue<>();
     private final AtomicInteger wheelAcc = new AtomicInteger();
     private volatile int mouseX = Const.WIDTH / 2, mouseY = Const.HEIGHT / 2;
     private volatile boolean leftDown, rightDown;
@@ -23,6 +24,7 @@ public final class Input {
 
     // ---------------------------------------------------- event side (Swing thread)
     public void keyDown(int k) { if (k >= 0 && k < keys.length) { if (!keys[k]) pressedQueue.add(k); keys[k] = true; } }
+    public void charTyped(char c) { if (c >= 32 && c < 127) typedQueue.add(c); }
     public void keyUp(int k) { if (k >= 0 && k < keys.length) keys[k] = false; }
     public void mouseMoved(int x, int y) { mouseX = x; mouseY = y; }
     public void mouseButton(int button, boolean down) {
@@ -38,6 +40,12 @@ public final class Input {
         Integer k; while ((k = pressedQueue.poll()) != null) pressed.add(k);
         int[] c; while ((c = clickQueue.poll()) != null) clicks.add(c);
         wheel = wheelAcc.getAndSet(0);
+    }
+    /** Printable characters typed since the last call (for text entry screens). */
+    public String drainTyped() {
+        StringBuilder sb = new StringBuilder();
+        Character c; while ((c = typedQueue.poll()) != null) sb.append(c);
+        return sb.toString();
     }
     public boolean isDown(int k) { return k >= 0 && k < keys.length && keys[k]; }
     public boolean wasPressed(int... ks) { for (int k : ks) if (pressed.contains(k)) return true; return false; }

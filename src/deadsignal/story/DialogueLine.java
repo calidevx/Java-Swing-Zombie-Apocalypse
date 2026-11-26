@@ -8,5 +8,5 @@ public final class DialogueLine {
     public DialogueLine(Speaker speaker, String text) { this.speaker = speaker; this.text = text; }
 
     public Speaker getSpeaker() { return speaker; }
-    public String getText() { return text; }
+    public String getText() { return text.replace("{name}", PlayerName.get()); }
 }

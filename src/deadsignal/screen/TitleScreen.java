@@ -24,7 +24,7 @@ public final class TitleScreen extends Screen {
             if (game.getInput().wasPressed(KeyEvent.VK_RIGHT, KeyEvent.VK_D)) { game.setDifficulty(game.getDifficulty().next()); game.getAudio().play("select"); }
         }
         switch (menu.handle(game.getInput(), game.getAudio())) {
-            case 0: game.getAudio().play("objective"); game.newGame(); break;
+            case 0: game.getAudio().play("select"); game.setScreen(new NameEntryScreen(game, this)); break;
             case 1: game.setDifficulty(game.getDifficulty().next()); game.getAudio().play("select"); break;
             case 2: game.setScreen(new ControlsScreen(game, this)); break;
             case 3: game.quit(); break;

@@ -170,7 +170,7 @@ public final class Shepherd extends Boss implements LightEmitter {
             for (int k = 0; k < 6; k++) w.particles().spawn(ParticleType.SMOKE, pt[0], pt[1], Util.rf(-40, 40), Util.rf(-40, 40), 0.7f, 9, new Color(60, 20, 80, 160));
         }
         w.announcer().showBanner("THE HORDE RISES", new Color(255, 90, 90));
-        w.radio().queue(new DialogueLine(Speaker.LENA, "He's gone - no, he's still there, under everything! Hold out, Kai!"));
+        w.radio().queue(new DialogueLine(Speaker.LENA, "He's gone - no, he's still there, under everything! Hold out, {name}!"));
     }
 
     private void updateVoid(GameWorld w, float dt) {
@@ -251,7 +251,7 @@ public final class Shepherd extends Boss implements LightEmitter {
             w.audio().play("roar", 0.8f, 1.4f);
             if (!veilExplained) {
                 veilExplained = true;
-                w.radio().queue(new DialogueLine(Speaker.LENA, "He's slipped beyond the veil - bullets pass right through him! Use fire and explosives, Kai!"));
+                w.radio().queue(new DialogueLine(Speaker.LENA, "He's slipped beyond the veil - bullets pass right through him! Use fire and explosives, {name}!"));
             }
         }
     }
